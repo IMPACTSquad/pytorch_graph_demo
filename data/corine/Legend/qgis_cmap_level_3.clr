@@ -1,0 +1,46 @@
+0,0,0,0,255,Confused
+1,230,0,77,255,Continuous urban fabric
+2,255,0,0,255,Discontinuous urban fabric
+3,204,77,242,255,Industrial or commercial units
+4,204,0,0,255,Road and rail networks and associated land
+5,230,204,204,255,Port areas
+6,230,204,230,255,Airports
+7,166,0,204,255,Mineral extraction sites
+8,166,77,0,255,Dump sites
+9,255,77,255,255,Construction sites
+10,255,166,255,255,Green urban areas
+11,255,230,255,255,Sport and leisure facilities
+12,255,255,168,255,Non-irrigated arable land
+13,255,255,0,255,Permanently irrigated land
+14,230,230,0,255,Rice fields
+15,230,128,0,255,Vineyards
+16,242,166,77,255,Fruit trees and berry plantations
+17,230,166,0,255,Olive groves
+18,230,230,77,255,Pastures
+19,255,230,166,255,Annual crops associated with permanent crops
+20,255,230,77,255,Complex cultivation patterns
+21,230,204,77,255,Land principally occupied by agriculture with significant areas of natural vegetation
+22,242,204,166,255,Agro-forestry areas
+23,128,255,0,255,Broad-leaved forest
+24,0,166,0,255,Coniferous forest
+25,77,255,0,255,Mixed forest
+26,204,242,77,255,Natural grasslands
+27,166,255,128,255,Moors and heathland
+28,166,230,77,255,Sclerophyllous vegetation
+29,166,242,0,255,Transitional woodland-shrub
+30,230,230,230,255,Beaches dunes sands
+31,204,204,204,255,Bare rocks
+32,204,255,204,255,Sparsely vegetated areas
+33,0,0,0,255,Burnt areas
+34,166,230,204,255,Glaciers and perpetual snow
+35,166,166,255,255,Inland marshes
+36,77,77,255,255,Peat bogs
+37,204,204,255,255,Salt marshes
+38,230,230,255,255,Salines
+39,166,166,230,255,Intertidal flats
+40,0,204,242,255,Water courses
+41,128,242,230,255,Water bodies
+42,0,255,166,255,Coastal lagoons
+43,166,255,230,255,Estuaries
+44,230,242,255,255,Sea and ocean
+128,255,255,255,255,NODATA

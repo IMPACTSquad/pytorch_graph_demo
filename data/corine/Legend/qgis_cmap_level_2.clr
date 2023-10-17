@@ -1,0 +1,17 @@
+0,0,0,0,255,Confused
+1,242,0,38,255,Urban fabric
+2,217,121,169,255,Industrial commercial and transport units
+3,195,51,153,255,Mine dump and construction sites
+4,255,198,255,255,Artificial non-agricultural vegetated areas
+5,246,246,56,255,Arable land
+6,234,153,25,255,Permanent crops
+7,230,230,77,255,Pastures
+8,245,217,121,255,Heterogeneous agricultural areas
+9,68,225,0,255,Forests
+10,175,242,70,255,Shrub and/or herbaceous vegetation associations
+11,160,183,168,255,Open spaces with little or no vegetation
+12,121,121,255,255,Inland wetlands
+13,200,200,246,255,Coastal wetlands
+14,64,223,236,255,Inland waters
+15,132,250,217,255,Marine waters
+128,255,255,255,255,NODATA
