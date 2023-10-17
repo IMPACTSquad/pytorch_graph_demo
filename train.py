@@ -13,10 +13,7 @@ activations = {
     "softmax": F.softmax,
 }
 
-output_activations = {
-    "softmax": torch.nn.Softmax(dim=1),
-    "sigmoid": torch.nn.Sigmoid(),
-}
+output_activations = {"softmax": torch.nn.Softmax(dim=1), "sigmoid": torch.nn.Sigmoid(), "linear": None}
 
 
 class GCN(torch.nn.Module):
@@ -38,7 +35,6 @@ class GCN(torch.nn.Module):
             cached=True,  # stores \(\hat{D}^{-1/2} \hat{A} \hat{D}^{-1/2}\) for faster computation NOTE only works if the graph is static, i.e. transductive learning scenario
             bias=use_bias,  # whether to use a bias vector
         )
-        self._gcn1 = GCNConv(channels, n_labels, bias=use_bias)
         self._gcn1 = GCNConv(
             in_channels=-1,  # -1 means that it is inferred from the data automatically
             out_channels=n_labels,  # number of model output features
@@ -57,7 +53,7 @@ class GCN(torch.nn.Module):
         # first gcn layer
         x = self._gcn0(x, edge_index)
         # first layer's non-linear activation function
-        x = F.relu(x)
+        x = self._activation(x)
 
         # dropout
         x = F.dropout(x, p=self.dropout_rate, training=self.training)
@@ -65,7 +61,9 @@ class GCN(torch.nn.Module):
         # second gcn layer
         x = self._gcn1(x, edge_index)
 
-        return self._output_activation(x)
+        if self._output_activation is not None:
+            x = self._output_activation(x)
+        return x
 
 
 def train_classification():
@@ -168,7 +166,7 @@ def train_regression():
     )
 
     # GCN model
-    model = GCN(n_labels=1, channels=32, output_activation="sigmoid", use_bias=False)
+    model = GCN(n_labels=1, channels=32, output_activation="linear", use_bias=False)
     # Put model/data on CPU/GPU as needed
     model = model.to(device)
     data = dataset[0].to(device)
@@ -219,7 +217,7 @@ def train_regression():
             print(f"Epoch {epoch + 1}: loss: {loss:.3f} val_loss: {val_loss:.3f}")
 
     # restore best model
-    model = torch.load("models/best_classifier.pt")
+    model = torch.load("models/best_regression_model.pt")
     # Put model in evaluation mode (determines whether dropout is used etc. i.e. no dropout in evaluation mode)
     model.eval()
 
