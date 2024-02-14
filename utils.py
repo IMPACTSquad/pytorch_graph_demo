@@ -1,6 +1,7 @@
 import importlib
 from glob import glob
 import numpy as np
+import os
 
 if importlib.util.find_spec("rasterio"):
     import rasterio
@@ -35,13 +36,16 @@ def open_land_cover_colormap():
 def open_pm25(no_data_val=-999):
     files = glob("data/PM2_5/*.tif")
     pm25 = []
-    try:
-        for f in files:
-            with rasterio.open(f) as src:
-                pm25.append(src.read(1))
-        pm25 = np.stack(pm25, axis=-1)
-        pm25[pm25 == no_data_val] = np.nan
-    except NameError:  # if could not install rasterio, fall back to saved numpy array
+    if not os.path.isfile("data/PM2_5/pm25.npy"):
+        try:
+            for f in files:
+                with rasterio.open(f) as src:
+                    pm25.append(src.read(1))
+            pm25 = np.stack(pm25, axis=-1)
+            pm25[pm25 == no_data_val] = np.nan
+        except NameError:  # if could not install rasterio, fall back to saved numpy array
+            pm25 = np.load("data/PM2_5/pm25.npy")
+    else:
         pm25 = np.load("data/PM2_5/pm25.npy")
     return pm25
 
